@@ -141,4 +141,18 @@ public class CameraFollow : MonoBehaviour
 ![](res/49.png)
 ![](res/50.png)
 ![](res/51.png)
+# 創建生命UI
+![](res/52.png)
+![](res/53.png)
+![](res/54.png)
+![](res/55.png)
+![](res/56.png)
+![](res/57.png)
+![](res/58.png)
+![](res/59.png)
+![](res/60.png)
+![](res/61.png)
+![](res/62.png)
+![](res/63.png)
+![](res/64.png)
 # 未完待續
