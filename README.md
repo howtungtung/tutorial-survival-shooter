@@ -370,3 +370,127 @@ public class PlayerHealth : MonoBehaviour
     }
 }
 ```
+# 顯示分數
+![](res/78.png)
+![](res/83.png)
+![](res/84.png)
+![](res/80.png)
+# EnemyHealth.cs
+移除註解
+```csharp
+using UnityEngine;
+
+public class EnemyHealth : MonoBehaviour
+{
+    public int startingHealth = 100;
+    public int currentHealth;
+    public float sinkSpeed = 2.5f;
+    public int scoreValue = 10;
+    public AudioClip deathClip;
+
+
+    Animator anim;
+    AudioSource enemyAudio;
+    ParticleSystem hitParticles;
+    CapsuleCollider capsuleCollider;
+    bool isDead;
+    bool isSinking;
+
+
+    void Awake ()
+    {
+        anim = GetComponent <Animator> ();
+        enemyAudio = GetComponent <AudioSource> ();
+        hitParticles = GetComponentInChildren <ParticleSystem> ();
+        capsuleCollider = GetComponent <CapsuleCollider> ();
+
+        currentHealth = startingHealth;
+    }
+
+
+    void Update ()
+    {
+        if(isSinking)
+        {
+            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+        }
+    }
+
+
+    public void TakeDamage (int amount, Vector3 hitPoint)
+    {
+        if(isDead)
+            return;
+
+        enemyAudio.Play ();
+
+        currentHealth -= amount;
+            
+        hitParticles.transform.position = hitPoint;
+        hitParticles.Play();
+
+        if(currentHealth <= 0)
+        {
+            Death ();
+        }
+    }
+
+
+    void Death ()
+    {
+        isDead = true;
+
+        capsuleCollider.isTrigger = true;
+
+        anim.SetTrigger ("Dead");
+
+        enemyAudio.clip = deathClip;
+        enemyAudio.Play ();
+    }
+
+
+    public void StartSinking ()
+    {
+        GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = false;
+        GetComponent <Rigidbody> ().isKinematic = true;
+        isSinking = true;
+        ScoreManager.score += scoreValue;
+        Destroy (gameObject, 2f);
+    }
+}
+```
+![](res/81.png)
+![](res/82.png)
+# 更多的敵人
+![](res/85.png)
+![](res/86.png)
+![](res/87.png)
+![](res/88.png)
+![](res/89.png)
+![](res/90.png)
+![](res/91.png)
+![](res/92.png)
+![](res/93.png)
+![](res/94.png)
+![](res/95.png)
+![](res/96.png)
+![](res/97.png)
+![](res/98.png)
+![](res/99.png)
+![](res/100.png)
+![](res/101.png)
+![](res/102.png)
+![](res/103.png)
+# 完成遊戲流程
+![](res/104.png)
+![](res/105.png)
+![](res/106.png)
+![](res/107.png)
+![](res/108.png)
+![](res/109.png)
+![](res/110.png)
+![](res/111.png)
+![](res/112.png)
+![](res/113.png)
+![](res/114.png)
+![](res/115.png)
