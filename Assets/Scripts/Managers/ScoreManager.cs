@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Collections;
 
 public class ScoreManager : MonoBehaviour
@@ -7,12 +8,12 @@ public class ScoreManager : MonoBehaviour
     public static int score;
 
 
-    Text text;
+    TextMeshProUGUI text;
 
 
     void Awake ()
     {
-        text = GetComponent <Text> ();
+        text = GetComponent <TextMeshProUGUI> ();
         score = 0;
     }
 
